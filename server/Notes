@@ -1,0 +1,36 @@
+1. make server folder -> inside server -> npm init
+                                    -> npm i express 
+
+Nodejs by default doesn't support ES6 new features like import , export , let , const , arrow function,etc
+ES6 is updated version of javascript but it doesn't know how to compile ES6
+Babel is a middle person. Babel is a library . It will compile new version of javascript to the 
+ative/old  javascript code.
+By default react also use Babel but in Nodejs we have to setup the Babel.
+
+2. install Babel ->npm install --save-dev @babel/core
+3. create file -> .babelrc
+4. npm install @babel/preset-env @babel/cli @babel/node --save-dev
+5. change script in package.json
+6. npm run start
+7. set up Nodemon -> npm i nodemon -D
+8. add dev in script of  package.json->npm run dev 
+9. npm i mongoose cors helmet.
+    add related helmet , cores
+10. create database folder
+11. create API folder
+12. npm i bcryptjs
+13. npm install jsonwebtoken
+14. crete database
+15. crete .env file
+16. npm i dotenv
+17. export it in index.js
+18. create file connection.js
+19. cloud.google.com => API and services => search google plus => select google API
+20. client id -> 182636784836-7h1qtje5i2f0bnlgj5sd1k6lug86fj6i.apps.googleusercontent.com
+21. client secret -> T1CZb6MsU4IjS1fw90AaXsJ1
+22. npm i passport passport-google-oauth20
+23. create google.config.js file
+24. create Restaurant folder in API
+25. npm i aws-sdk -> To access aws services
+26. create Image folder in API
+27. npm i multer

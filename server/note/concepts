@@ -1,0 +1,29 @@
+1. JWT -> Json Web Tokens -> use for authentication and authorization
+    i)  authentication - login
+    ii) authorization - access
+
+2. cors - cross origin request. server should  be able to allow request other than your own 
+    server . origin means our own server.
+
+3. import is not a javascript feature its a ES6 feature
+
+4. Nodejs by default doesn't support ES6 new features like import , export , let , const , arrow function,etc
+ES6 is updated version of javascript but it doesn't know how to compile ES6
+Babel is a middle person. Babel is a library . It will compile new version of javascript to the 
+ative/old  javascript code.
+By default react also use Babel but in Nodejs we have to setup the Babel.
+
+5. status 200 ->success
+   status 401 -> unauthenticated
+   status 403 -> unauthorized
+   status 500 -> internal server error
+   status 404 -> not found
+
+Websites or libraries
+1. bcryptjs
+2. JWT
+3. JWT.io
+3. jsonwebtoken npm
+4. cloud.google.com => API and services => search google plus => select google API
+5. aws.amazon.com => search s3 => create new bucket
+

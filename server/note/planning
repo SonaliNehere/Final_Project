@@ -1,0 +1,41 @@
+Zomato Planning
+Pages
+ -> Public 
+     - Home Delivery Pages
+     - dining out
+     - Night life
+     - Nutrition
+     - restaurant Pages
+
+-> Pages
+    - cart
+    - Settings
+
+Technical Details
+-> MongoDB as database
+-> AWS S3 as block storage - to store images
+-> Open Street Map
+
+
+DATABASE planning
+-> user 
+-> restaurant
+-> food
+-> menu
+-> images
+-> order
+-> reviews
+
+For Deployment
+Developer push code in  -> gitHUB -> CICD detect all code -> pass to -> AWS
+
+API Planning
+-> Auth
+-> Foods
+-> Restaurants
+-> menu
+-> order
+-> Payments -razorpay
+-> reviews
+-> user
+-> Image
