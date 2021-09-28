@@ -1,0 +1,37 @@
+Frontend
+1. create client folder
+2. npx create-react-app . => if we do not write dot then it will create another folder inside 
+   client and will place all setup files in that folder
+3. npm i
+4. npm start
+5. clean or simplify app.js, app.css, index.css, index.js
+6. setup tailwind => install tailwind via npm 
+     -> npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+7. install and configure CRACO => npm install @craco/craco
+8. make changes in script from tailwind installation
+9. make file craco.config.js
+10. generate your tailwind.config.js file: => npx tailwindcss-cli@latest init
+11. add content in index.css
+12. install react router dom to navigate => npm i react-router-dom
+13. install react icons => npm i react-icons
+14. npm i classnames
+15. npm i react-slick
+16. npm install slick-carousel => for carousel
+17. npm i react-rating-stars-component => star ratings
+18. npm i leaflet react-leaflet   => install react leaflet for map
+19. delete cache folder from node modules , in package.json - makes changes in browserlist
+20. react image viewer => npm i react-images-viewer
+
+
+
+Concepts or links ->
+1. color =>  https://smart-swatch.netlify.app/
+2. react icons => https://react-icons.github.io/react-icons/
+3. classnames => https://www.npmjs.com/package/classnames
+4. react slick npm => https://www.npmjs.com/package/react-slick
+5. react rating => https://www.npmjs.com/package/react-rating-stars-component
+6. react rating star component => 
+      https://www.npmjs.com/package/react-rating-stars-component
+7. leaflet map react => https://react-leaflet.js.org/
+8. npm i @headlessui/react
+9. react image viewer => https://www.npmjs.com/package/react-images-viewer

@@ -37,15 +37,3 @@ By default react also use Babel but in Nodejs we have to setup the Babel.
 28. npm i joi
 29. npm i passport-jwt
 
-Frontend
-1. create client folder
-2. npx create-react-app . => if we do not write dot then it will create another folder inside 
-   client and will place all setup files in that folder
-3. npm i
-4. npm start
-5.
-6.
-7.
-8.
-9.
-10.
