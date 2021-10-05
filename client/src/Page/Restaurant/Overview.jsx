@@ -66,28 +66,29 @@ const Overview = () => {
 
     return (
         <>
-            <div className="flex flex-col md:flex-row relative">
-                <div className="w-full  shadow-xl md:w-8/12">
-                    <h2 className="font-semibold text-lg md:text-2xl my-4">
+            <div className="flex flex-col md:flex-row relative ">
+                <div className="w-full md:w-8/12 w-100">
+                    <h2 className="font-semibold text-lg md:text-2xl my-4 mx-2 ">
                         About this place
                     </h2>
                     <div className="flex justify-between items-center">
-                        <h4 className="text-lg font-medium">Menu</h4>
+                        <h4 className="text-lg font-medium mx-2">Menu</h4>
                         <Link to={`/restaurant/${id}/menu`}>
                             <span className="flex items-center gap-1 text-zomato-400">
                                 See all menu <IoMdArrowDropright /> 
                             </span>
                         </Link>
                     </div>
-                    <div className="flex flex-wrap gap-3 my-4">
+                    <div className="flex flex-wrap gap-3 my-4 mx-2">
                             <MenuCollection 
                                 menuTitle="menu"
                                 pages="3"
-                                image="https://b.zmtcdn.com/data/menus/427/49427/dbd02f1683f5e35424da60933b863d2f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"
+                                image={["https://b.zmtcdn.com/data/menus/427/49427/dbd02f1683f5e35424da60933b863d2f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                                "https://b.zmtcdn.com/data/menus/004/35004/7cc49194ce85b51396b77eeecb53f738.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"]}
                             />
                     </div>
-                    <h4 className="text-lg font-medium my-4">Cuisine</h4>
-                    <div className="flex flex-wrap gap-2">
+                    <h4 className="text-lg font-medium my-4 mx-2">Cuisine</h4>
+                    <div className="flex flex-wrap gap-2 mx-2">
                         <span className="border border-gray-600 text-blue-400 px-2 py-1 rounded-full">
                             Street Food
                         </span>
@@ -102,7 +103,7 @@ const Overview = () => {
                         </span>
 
                     </div>
-                    <div className="my-4">
+                    <div className="my-4 mx-2">
                         <h4 className="text-lg font-medium">Average Cost</h4>
                         <h6>₹100 for one order (approx.)</h6>
                         <small className="text-gray-500">
@@ -110,7 +111,7 @@ const Overview = () => {
                         </small>
                     </div>
                     <div className="my-4 ">
-                        <h4 className="text-lg font-medium">Similar Restaurants</h4>
+                        <h4 className="text-lg font-medium mx-2">Similar Restaurants</h4>
                         <Slider {...settings}>
                             <MenuSimilarRestaurantCard
                                 image="https://b.zmtcdn.com/data/pictures/0/19594240/290caace5a39d17128e63288b4389de6_featured_v2.jpg?output-format=webp"
@@ -134,7 +135,7 @@ const Overview = () => {
                             />
                         </Slider>
                     </div>
-                    <div className="">
+                    <div className="mx-2">
                         <h4 className="text-lg font-medium">
                             Rate your delivery experience 
                         </h4>
@@ -145,7 +146,7 @@ const Overview = () => {
                             activeColor="#ffd700"
                         />
                     </div>
-                    <div className="my-4 w-full md:hidden flex flex-col gap-4">
+                    <div className="my-4 w-full md:hidden flex flex-col gap-4 mx-2">
                         <MapView 
                         title="Mumbai Express"
                         address="15, Sigma Central Mall, Vasanth Nagar, Khar Road, Mumbai"
@@ -154,7 +155,7 @@ const Overview = () => {
 
                         />
                     </div>
-                    <div className="my-4 flex flex-col gap-4"> 
+                    <div className="my-4 flex flex-col gap-4 mx-2"> 
                         <ReviewCard  />
                         <ReviewCard  />
                         <ReviewCard  />
