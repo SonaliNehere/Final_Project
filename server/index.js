@@ -22,7 +22,7 @@ import Reviews from "./API/reviews";
 import Image from "./API/Image";
 import User from "./API/user";
 import Menu from "./API/menu";
-import MailService from ".API/Mail";
+import MailService from "./API/Mail";
 
 
 

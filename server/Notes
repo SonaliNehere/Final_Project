@@ -36,4 +36,5 @@ By default react also use Babel but in Nodejs we have to setup the Babel.
 27. npm i multer
 28. npm i joi
 29. npm i passport-jwt
+30. npm install mailgun-js
 
