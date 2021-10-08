@@ -28,4 +28,6 @@ Websites or libraries
 5. aws.amazon.com => search s3 => create new bucket
 6. https://www.npmjs.com/package/joi => joi-npm
 7. aws cli
+8. mailgun  => is a service help you to send email
+9. nodemailer => good for college projects not for production purpose
 

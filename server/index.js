@@ -19,8 +19,11 @@ import Restaurant from "./API/Restaurant";
 import Food from "./API/Food";
 import Order from "./API/orders";
 import Reviews from "./API/reviews";
-//import Image from "./API/Image;
+import Image from "./API/Image";
 import User from "./API/user";
+import Menu from "./API/menu";
+import MailService from ".API/Mail";
+
 
 
 //Database connection
@@ -45,10 +48,11 @@ routeConfig(passport);
 zomato.use("/auth", Auth);
 zomato.use("/restaurant", Restaurant);
 zomato.use("/food", Food);
-//zomato.use("/image", Image);
+zomato.use("/image", Image);
 zomato.use("/order", Order);
 zomato.use("/reviews", Reviews);
 zomato.use("/user", User);
+zomato.use("/mail", MailService);
 
 
 zomato.get("/", (req, res) => res.json({message: "Setup success"}));
