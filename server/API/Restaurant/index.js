@@ -68,7 +68,7 @@ Router.get("/search", async (req, res) => {
       await ValidateRestaurantSearchString(req.body);
       const { searchString } = req.body;
   
-      const restaurants = await RestaurantModel.find({
+      const restaurants = await RestaurantModel.findById({
         name: { $regex: searchString, $options: "i" }, //i stands for case insensitive
       });
       if (!restaurants)

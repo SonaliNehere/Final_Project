@@ -37,4 +37,6 @@ By default react also use Babel but in Nodejs we have to setup the Babel.
 28. npm i joi
 29. npm i passport-jwt
 30. npm install mailgun-js
+31. npm i razorpay
+MONGO_URL=mongodb+srv://sonalinehere:Mumbai15@zomato.6sjq7.mongodb.net/zomato?retryWrites=true&w=majority
 
