@@ -1,7 +1,21 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { TiStarFullOutline } from "react-icons/ti";
+import {useDispatch} from "react-redux";
+import {getUser} from "../../../Redux/Reducer/User/user.action";
+import dayjs from "dayjs";
 
-const ReviewCard = () => {
+const ReviewCard = (props) => {
+    const [user, setUser] = useState("");
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUser(props.user)).then((data) => 
+            setUser(data.payload.user.fullname)
+       
+        );
+    }, []);
+
+
     return (
         <>
             <div className="flex flex-col gap-3 my-3" >
@@ -17,9 +31,11 @@ const ReviewCard = () => {
                         </div>
                         <div className="flex flex-col ">
                             <h3 className="text-lg font-semibold ">
-                            Sonali Nehere 
+                            {user} 
                             </h3>
-                            <small className="text-gray-500">5 Reviews &#8226; 3 Followers</small>
+                            <small className="text-gray-500">
+                                5 Reviews &#8226; 3 Followers
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -31,15 +47,16 @@ const ReviewCard = () => {
                         <span className="text-white text-xs bg-green-700 px-2 py-1 rounded-lg flex items-center gap-1">
                             3 <TiStarFullOutline />
                         </span>
-                        <h5 className="font-regular uppercase">Delivery</h5>
-                        <small className="text-gray-500">3 days ago</small>
+                        <h5 className="font-regular uppercase">
+                            {props.isRestaurantReview? "Dining" : "Delivery"}
+                        </h5>
+                        <small className="text-gray-500">
+                            {dayjs(props.createdAt).format("DD MM YYYY")}
+                        </small>
                     </div>
                     <div classname="w-full">
                         <p className="text-gray-600 font-light w-full text-base">
-                        Food presentation quality good value timely service
-                        Ordered Dutch chocolate for my brother's birthday and they all enjoyed the cake.
-                        It had less cream which is how we prefer the caked to be. The cake had rich taste chocolate and it was moist.
-                        Will surely order more from here.
+                            {props.reviewText}
                         </p>
                     </div>
                 </div>

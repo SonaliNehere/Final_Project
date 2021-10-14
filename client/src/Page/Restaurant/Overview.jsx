@@ -1,26 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Slider from 'react-slick';
 import { Link, useParams } from "react-router-dom";
 import { IoMdArrowDropright } from "react-icons/io";
 import { MdContentCopy } from "react-icons/md";
 import { FaDirections } from "react-icons/fa";
-import { NextArrow, PrevArrow } from '../../Components/CarousalArrow';
 import ReactStars from "react-rating-stars-component";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-
-
-
+import { useSelector, useDispatch } from "react-redux";
 
 //components
 import MenuSimilarRestaurantCard from './MenuSimilarRestaurantCard';
 import ReviewCard from '../../Components/restaurant/Reviews/ReviewCard';
 import MapView from '../../Components/restaurant/MapView';
 import MenuCollection from '../../Components/restaurant/MenuCollection';
+import { NextArrow, PrevArrow } from '../../Components/CarousalArrow';
+import { getImage } from '../../Redux/Reducer/Image/Image.action';
+import { getReviews } from '../../Redux/Reducer/Reviews/review.action';
+
 
 
 
 
 const Overview = () => {
+    const [menuImage, setMenuImages] = useState({images: []});
+    const [Reviews, setReviews] = useState([]);
+
     const { id } = useParams();
  
     const settings = {
@@ -60,9 +64,35 @@ const Overview = () => {
         ],
       };
 
-      const ratingChanged = (newRating) => {
+   
+    const reduxState = useSelector(
+        (globalStore) => globalStore.restaurant.selectedRestaurant.restaurant
+            
+    );
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (reduxState) {
+            dispatch(getImage(reduxState?.menuImage)).then((data) => { 
+                const images = [];
+                data.payload.image.images.map(({ location }) => 
+                    images.push(location));
+                setMenuImages(images);
+            });
+            dispatch(getReviews(reduxState?._id)).then((data) => 
+                setReviews(data.payload.reviews)
+            );
+        }
+    }, []);
+
+    const ratingChanged = (newRating) => {
         console.log(newRating);
-      };
+    };
+
+    const getLatLong = (mapAddress) => {
+        return(mapAddress?.split(",").map((item) => parseFloat(item)));
+    }
 
     return (
         <>
@@ -83,13 +113,20 @@ const Overview = () => {
                             <MenuCollection 
                                 menuTitle="menu"
                                 pages="3"
-                                image={["https://b.zmtcdn.com/data/menus/427/49427/dbd02f1683f5e35424da60933b863d2f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
-                                "https://b.zmtcdn.com/data/menus/004/35004/7cc49194ce85b51396b77eeecb53f738.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"]}
+                                /*image= {["https://b.zmtcdn.com/data/menus/427/49427/dbd02f1683f5e35424da60933b863d2f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                                    "https://b.zmtcdn.com/data/menus/004/35004/7cc49194ce85b51396b77eeecb53f738.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"]}  
+                                    */
+                                image={menuImage}
                             />
                     </div>
                     <h4 className="text-lg font-medium my-4 mx-2">Cuisine</h4>
                     <div className="flex flex-wrap gap-2 mx-2">
-                        <span className="border border-gray-600 text-blue-400 px-2 py-1 rounded-full">
+                        {reduxState?.cuisine.map((data) => (
+                            <span className="border border-gray-600 text-blue-400 px-2 py-1 rounded-full">
+                                {data}
+                            </span>
+                        ))}
+                        {/*<span className="border border-gray-600 text-blue-400 px-2 py-1 rounded-full">
                             Street Food
                         </span>
                         <span className="border border-gray-600 text-blue-400 px-2 py-1 rounded-full">
@@ -100,12 +137,12 @@ const Overview = () => {
                         </span>
                         <span className="border border-gray-600 text-blue-400 px-2 py-1 rounded-full">
                             Wrap
-                        </span>
+                        </span> */}
 
                     </div>
                     <div className="my-4 mx-2">
                         <h4 className="text-lg font-medium">Average Cost</h4>
-                        <h6>₹100 for one order (approx.)</h6>
+                        <h6>₹{reduxState?.averageCost} for one order (approx.)</h6>
                         <small className="text-gray-500">
                             Exclusive of applicable taxes and charges, if any
                         </small>
@@ -145,14 +182,17 @@ const Overview = () => {
                             size={24}
                             activeColor="#ffd700"
                         />
+                        {Reviews.map((reviewData) =>    (
+                            <ReviewCard {...reviewData}/>
+                        ))}
+                        
                     </div>
                     <div className="my-4 w-full md:hidden flex flex-col gap-4 mx-2">
                         <MapView 
-                        title="Mumbai Express"
-                        address="15, Sigma Central Mall, Vasanth Nagar, Khar Road, Mumbai"
-                        mapLocation={[12.988134202889283, 77.59405893120281]}
-                        phno="+918182881881"
-
+                        title={reduxState?.name}
+                        phno={`+91${reduxState?.contactNumber}`}
+                        mapLocation={getLatLong(reduxState?.mapLocation)}
+                        address={reduxState?.address}
                         />
                     </div>
                     <div className="my-4 flex flex-col gap-4 mx-2"> 
@@ -168,11 +208,10 @@ const Overview = () => {
                     className="hidden md:flex md:w-4/12 sticky rounded-xl top-2 bg-white p-3 shadow-md flex flex-col gap-4"
                 >
                     <MapView 
-                        title="Mumbai Express"
-                        address="15, Sigma Central Mall, Vasanth Nagar, Khar Road, Mumbai"
-                        mapLocation={[12.988134202889283, 77.59405893120281]}
-                        phno="+918182881881"
-
+                        title={reduxState?.name}
+                        phno={`+91${reduxState?.contactNumber}`}
+                        mapLocation={getLatLong(reduxState?.mapLocation)}
+                        address={reduxState?.address}
                     />
                 </aside>
             </div>

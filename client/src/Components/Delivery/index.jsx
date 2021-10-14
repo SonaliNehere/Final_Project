@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import { useSelector } from "react-redux";
 
 
 //components
@@ -10,7 +11,7 @@ import RestaurantCard from '../RestaurantCard';
 const Delivery = () => {
 
     const [restaurantList, setRestaurantList] = useState([
-        {
+       /* {
             _id: "123456",
             photos: [
                 "https://b.zmtcdn.com/data/pictures/chains/3/18140523/cfbda35382090ddbf5128a946c235f74_o2_featured_v2.jpg"
@@ -48,16 +49,29 @@ const Delivery = () => {
             isOff: 20,
             durationOfdelivery: 30,
             restaurantReviewValue: 4.2,
-        },
-    ]);
+        }, */
+    ]); 
+
+    const reduxState = useSelector(
+        (globalStore) => globalStore.restaurant.restaurants
+    );
+
+    useEffect(() => {
+        reduxState.restaurants && setRestaurantList(reduxState.restaurants);
+    }, [reduxState.restaurants]);
+   
 
     return (
         <>
             <DeliveryCarousal />
+            <h1 className="text-2xl font-semibold mb-4">Delivery Restaurants in Vijay Nagar</h1>
             {/* <Brand />  */}
             <div className="flex justify-between flex-wrap">
                 {restaurantList.map((restaurant) => (
-                    <RestaurantCard {...restaurant} key={restaurant._id} />
+                    <RestaurantCard {...restaurant} 
+                        key={restaurant._id} 
+                        whereIsthisres="asf"
+                    />
                 ))}
             
            

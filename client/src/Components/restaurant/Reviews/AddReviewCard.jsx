@@ -7,8 +7,14 @@ import ReviewModal from './ReviewModal';
 
 const AddReviewCard = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [reviewData, setReviewData] = useState({});
 
-    const openModal = () => setIsOpen(true);
+    const openModal = () => {
+        if(!localStorage.zomatouser){
+            return alert("please sign in to post a review");
+        }
+        setIsOpen(true);
+    };
 
 
     //const handleRating = (value) => console.log(value);

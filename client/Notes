@@ -21,6 +21,12 @@ Frontend
 18. npm i leaflet react-leaflet   => install react leaflet for map
 19. delete cache folder from node modules , in package.json - makes changes in browserlist
 20. react image viewer => npm i react-images-viewer
+21. Redux => yarn add redux react-redux
+22. Redux thunk to make asynchronous task and logger for console log => 
+      yarn add redux-thunk redux-logger
+23. yarn add axios
+24. yarn add dayjs
+25. yarn add gravatar
 
 
 
@@ -35,3 +41,20 @@ Concepts or links ->
 7. leaflet map react => https://react-leaflet.js.org/
 8. npm i @headlessui/react
 9. react image viewer => https://www.npmjs.com/package/react-images-viewer
+10. axios default configuration => https://axios-http.com/docs/config_defaults
+11. gravatar api => https://www.npmjs.com/package/gravatar-api
+12. razorpay docs => https://razorpay.com/docs/
+13. razorpay npm => https://www.npmjs.com/package/razorpay
+install rozorpay in server
+
+*Redux - connect our frontend to backend , to manage all the data
+*state managment - state means data
+*prop-drilling - 
+*global store - components can easily access data from global store but not direct it will done by reducer
+*react(component) -----> Action means js function -----> reducer(managers) -----> golbal store
+reducer request to global store. global store will pass info to ---> reducer --> pass to --> action ---> pass to  ----> component
+*Redux uses state management. We are using redux avoid prop drilling
+*Use switch statement to manage all the individual pieces of global store
+*Redux by default doesn't support asynchronous task
+* we need logger only in development mode not in production mode
+*Thunk use to return object from async function

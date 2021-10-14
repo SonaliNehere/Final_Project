@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {useSelector, useDispatch} from "react-redux";
 import { AiOutlineCompass } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
 
@@ -7,17 +8,50 @@ import { BiTimeFive } from "react-icons/bi";
 import FloatMenuBtn from '../../Components/restaurant/Order-Online/FloatMenuBtn';
 import FoodItem from '../../Components/restaurant/Order-Online/FoodItem';
 import FoodList from '../../Components/restaurant/Order-Online/FoodList';
-import MenuCollection from '../../Components/restaurant/Order-Online/MenuListContainer';
+//import MenuCollection from '../../Components/restaurant/Order-Online/MenuListContainer';
 //import MenuCollection from '../../Components/restaurant/MenuCollection';
+import MenuListContainer from '../../Components/restaurant/Order-Online/MenuListContainer';
+
+//redux action
+import { getFoodList } from '../../Redux/Reducer/Food/Food.action';
+import { addCart } from '../../Redux/Reducer/Cart/Cart.action';
+
 
 
 const OrderOnline = () => {
+    const [menu, setMenu] = useState([]);
+    const [selected, setSelected] = useState("");
+    const onClickHandler = (e) => {
+        if(e.target.id) {
+            setSelected(e.target.id);
+        }
+        return;
+    };
+
+    const reduxState = useSelector(
+        (globalStore) => globalStore.restaurant.selectedRestaurant.restaurant
+    );
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        reduxState && 
+        dispatch(getFoodList(reduxState.menu)).then((data) => 
+            setMenu(data.payload.menus.menus)
+            //console.log(data)
+        );
+    }, [reduxState]);
+    console.log({state: menu});
     return (
         <>
             <div className="w-full h-screen flex ">
                 <aside className="hidden md:flex flex-col gap-3 border-r  border-gray-200  h-screen w-1/4">
-                    <MenuCollection/>
-                    <MenuCollection/>
+                    {menu.map((item) => (
+                        <MenuListContainer {...item} key={item._id }
+                        onClickHandler={onClickHandler} selected={selected} />
+                    ))}
+                   {/* <MenuListContainer/>
+                    <MenuListContainer/> */}
                    
                 </aside>
                 <div className="w-full h-screen md:w-3/4 px-4">
@@ -28,7 +62,10 @@ const OrderOnline = () => {
                         </h4>
                     </div>
                     <section className="h-screen overflow-y-scroll flex flex-col gap-3 md:gap-5">
-                        <FoodList 
+                        {menu.map((item) => (
+                            <FoodList key={item._id} {...item} />
+                        ))}
+                        {/* <FoodList 
                             title="Recommended"
                             items={[
                                 {
@@ -57,7 +94,7 @@ const OrderOnline = () => {
                                 },
                                 
                             ]}
-                        />
+                        /> */}
                         
         
         

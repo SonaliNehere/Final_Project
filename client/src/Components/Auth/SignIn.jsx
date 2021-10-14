@@ -2,15 +2,43 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useState } from 'react';
 import {FcGoogle} from "react-icons/fc";
+import { useDispatch } from "react-redux";
+
+
+//redux action
+import { signIn } from '../../Redux/Reducer/Auth/Auth.action';
 
 export default function SignIn({isOpen, setIsOpen}) {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => 
+    setUserData((prev) => ( {...prev, [e.target.name]: e.target.value}));
+  
+
   function closeModal() {
     setIsOpen(false)
+  }
+
+  const submit = () => {
+    setUserData({
+      email: "",
+      password: "",
+    
+    });
+    dispatch(signIn(userData));
   }
 
   function openModal() {
     setIsOpen(true)
   }
+
+  const googlesignin = () =>
+    (window.location.href = "http://localhost:4000/auth/google");
 
   return (
     <>
@@ -50,18 +78,26 @@ export default function SignIn({isOpen, setIsOpen}) {
               leaveTo="opacity-0 scale-95"
             >
               <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
-                
+                <Dialog.Title
+                  as="h3"
+                  className="text-lg font-medium leading-6 text-gray-900"
+                >
+                </Dialog.Title>
                 <div className=" flex flex-col gap-3 mt-2 w-full">
-                    <button className="py-2 justify-center flex items-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
+                    <button onClick={googlesignin}
+                      className="py-2 justify-center flex items-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
                         Sign In With Google <FcGoogle /> 
                     </button>
 
                     <form className="flex flex-col gap-3">
                         <div className="w-full flex flex-col gap-2">
-                            <label htmlFor="subject">Email</label>
+                            <label htmlFor="email">Email</label>
                             <input 
                                 type="text" 
                                 id="email" 
+                                name="email"
+                                onChange={handleChange}
+                                value={userData.email}
                                 placeholder="email@email.com" 
                                 className="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none
                                     focus:border-zomato-400"
@@ -69,16 +105,21 @@ export default function SignIn({isOpen, setIsOpen}) {
 
                         </div>
                         <div className="w-full flex flex-col gap-2">
-                            <label htmlFor="subject">Password</label>
+                            <label htmlFor="password">Password</label>
                             <input 
                                 type="password" 
                                 id="password" 
                                 placeholder="******" 
+                                name="password"
+                                onChange={handleChange}
+                                value={userData.password}
                                 className="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none
                                     focus:border-zomato-400"
                             />
                         </div>
-                        <div className="w-full text-center  bg-zomato-400 text-white py-2 rounded-lg">
+                        <div 
+                          onClick={submit}
+                          className="w-full text-center  bg-zomato-400 text-white py-2 rounded-lg">
                             Sign In
                         </div>
                     </form>
