@@ -17,8 +17,6 @@ import { s3Upload } from "../../Utils/AWS/s3";
 //router setup
 const Router = express.Router();
 
-
-
 //multer config
 const storage = multer.memoryStorage();
 const upload = multer({storage});
@@ -69,6 +67,7 @@ Router.post("/", upload.single("file"), async (req, res) => {
       return res.status(500).json({ error: error.message });
     }
   });
+
   
   /*
   Route     /c

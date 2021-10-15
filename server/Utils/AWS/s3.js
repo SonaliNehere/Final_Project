@@ -1,4 +1,3 @@
-
 import AWS from "aws-sdk";
 
 require("dotenv").config();

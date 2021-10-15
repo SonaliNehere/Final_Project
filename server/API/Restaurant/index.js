@@ -7,7 +7,8 @@ import { RestaurantModel } from "../../database/allModels";
 
 
 //validation
-import { ValidateRestaurantCity, ValidateRestaurantSearchString} from "../../validation/restaurant";
+import { ValidateRestaurantCity, ValidateRestaurantSearchString} from 
+  "../../validation/restaurant";
 import { ValidateRestaurantId } from "../../validation/food";
 
 //router setup
@@ -44,7 +45,7 @@ Router.get("/:_id", async(req, res) => {
     try{
         await ValidateRestaurantId(req.params);
         const {_id} = req.params;
-        const restaurant = await RestaurantModel.findone({_id});
+        const restaurant = await RestaurantModel.findById({_id});
         if(!restaurant)
             return res.status(400).json({ error: "Restaurant not found"});
 
@@ -68,7 +69,7 @@ Router.get("/search", async (req, res) => {
       await ValidateRestaurantSearchString(req.body);
       const { searchString } = req.body;
   
-      const restaurants = await RestaurantModel.findById({
+      const restaurants = await RestaurantModel.find({
         name: { $regex: searchString, $options: "i" }, //i stands for case insensitive
       });
       if (!restaurants)
@@ -81,6 +82,33 @@ Router.get("/search", async (req, res) => {
       return res.status(500).json({ error: error.message });
     }
   });
+
+  // @Route   POST /restaurants/new
+// @des     add new restaurant
+// @access  PRIVATE
+Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
+  try {
+    const newRestaurant = await RestaurantModal.create(req.body.restaurantData);
+    return res.json({ restaurants: newRestaurant });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+/* 
+{
+    "restaurantData": {
+        "name": "Pizza Hut",
+        "city": "Mumbai",
+        "address": "Mumbai",
+        "mapLocation": "28, 77",
+        "cuisine": [
+            "Pizza",
+            "Italian"
+        ],
+        "restaurantTimings": "10:00 - 23:00",
+        "contactNumber": "2345675435"
+    }
+} */
   
 
 export default Router;

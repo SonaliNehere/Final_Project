@@ -39,4 +39,4 @@ By default react also use Babel but in Nodejs we have to setup the Babel.
 30. npm install mailgun-js
 31. npm i razorpay
 MONGO_URL=mongodb+srv://sonalinehere:Mumbai15@zomato.6sjq7.mongodb.net/zomato?retryWrites=true&w=majority
-
+MONGO_URL=mongodb+srv://pavan:pavan@shapeai.ujqaw.mongodb.net/zomato?retryWrites=true&w=majority

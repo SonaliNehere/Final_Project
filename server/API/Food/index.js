@@ -61,6 +61,7 @@ Router.get("/r/:_id", async (req, res) => {
   Router.get("/r/:category", async (req, res) => {
     try {
       await Validatecategory(req.params);
+      
       const { category } = req.params;
       const foods = await FoodModel.find({
         category: { $regex: category, $options: "i" },
@@ -71,6 +72,32 @@ Router.get("/r/:_id", async (req, res) => {
       return res.status(500).json({ error: error.message });
     }
   });
+
+  
+// @Route   POST /foods/new
+// @des     add new food record to database
+// @access  PRIVATE
+Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
+  try {
+    const { foodData } = req.body;
+    const newFood = await FoodModal.create(foodData);
+    return res.json({ foods: newFood });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+/* {
+    "foodData": {
+        "name": "Pizza",
+        "description": "Its amazing",
+        "isVeg": true,
+        "isContainsEgg": false,
+        "isNonVeg": false,
+        "category": "italian",
+        "restaurant": "object id of added restaurant from database",
+        "price": 100
+    }
+} */
 
   export default Router;
 

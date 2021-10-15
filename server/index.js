@@ -55,6 +55,7 @@ zomato.use("/reviews", Reviews);
 zomato.use("/user", User);
 zomato.use("/mail", MailService);
 zomato.use("/payments", Payments);
+zomato.use("/menu", Menu);
 
 
 zomato.get("/", (req, res) => res.json({message: "Setup success"}));

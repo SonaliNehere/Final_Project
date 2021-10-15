@@ -51,6 +51,14 @@ Router.post("/signup", async(req, res) => {
         return res.status(500).json({error: error.message });
     }
 });
+/*
+{
+    "credentials": {
+        "email": "xyz@gmail.com",
+        "password": "12345",
+        "fullname": "xyzxyz"
+    }
+} */
 
 /*
 Route     /signin
