@@ -33,10 +33,6 @@ export default function SignIn({isOpen, setIsOpen}) {
     dispatch(signIn(userData));
   }
 
-  function openModal() {
-    setIsOpen(true)
-  }
-
   const googlesignin = () =>
     (window.location.href = "http://localhost:4000/auth/google");
 
@@ -77,15 +73,18 @@ export default function SignIn({isOpen, setIsOpen}) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden 
+              text-left align-middle transition-all transform bg-white shadow-xl
+               rounded-2xl">
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
-                >
-                </Dialog.Title>
+                ></Dialog.Title>
                 <div className=" flex flex-col gap-3 mt-2 w-full">
                     <button onClick={googlesignin}
-                      className="py-2 justify-center flex items-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
+                      className="py-2 justify-center flex rounded-lg items-center 
+                      gap-2 w-full border border-gray-400 bg-white text-gray-700 
+                      hover:bg-gray-100">
                         Sign In With Google <FcGoogle /> 
                     </button>
 
@@ -99,8 +98,8 @@ export default function SignIn({isOpen, setIsOpen}) {
                                 onChange={handleChange}
                                 value={userData.email}
                                 placeholder="email@email.com" 
-                                className="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none
-                                    focus:border-zomato-400"
+                                className="w-full border border-gray-400 px-3 py-2
+                                 rounded-lg focus:outline-none focus:border-zomato-400"
                             />
 
                         </div>
@@ -113,13 +112,14 @@ export default function SignIn({isOpen, setIsOpen}) {
                                 name="password"
                                 onChange={handleChange}
                                 value={userData.password}
-                                className="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none
+                                className="w-full border border-gray-400 px-3 py-2
+                                 rounded-lg focus:outline-none
                                     focus:border-zomato-400"
                             />
                         </div>
                         <div 
                           onClick={submit}
-                          className="w-full text-center  bg-zomato-400 text-white py-2 rounded-lg">
+                          className="w-full text-center bg-zomato-400 text-white py-2 rounded-lg">
                             Sign In
                         </div>
                     </form>
@@ -131,5 +131,5 @@ export default function SignIn({isOpen, setIsOpen}) {
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }

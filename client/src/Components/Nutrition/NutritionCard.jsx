@@ -3,7 +3,6 @@ import {BsStarFill, BsStarHalf,BsStar} from "react-icons/bs";
 import ReactStars from "react-rating-stars-component";
 import { render } from "react-dom";
  
-
 const NutritionCard = (props) => {
     return (
         <div className="p-4 w-full  md:w-1/2 lg:w-1/3 ">
@@ -35,7 +34,9 @@ const NutritionCard = (props) => {
                     />
                     <span className="text-gray-400">15</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-700">Sleep - Timed Release Melatonin</h3>
+                <h3 className="text-xl font-bold text-gray-700">
+                    Sleep - Timed Release Melatonin
+                </h3>
                 <p className="text-sm font-light text-gray-400">
                     An advanced timed-release formula that helps you fall asleep faster and wake up feeling fresher
                 </p>
@@ -45,7 +46,7 @@ const NutritionCard = (props) => {
                 <div>
                     <span>
                         {" "}
-                    <s className="text-gray-400 font-light mr-3">₹500 </s>
+                    <s className="text-gray-400 font-light mr-3">₹500 </s>{" "}
                     <strong >₹200</strong>
                     </span>
                     <p className="text-gray-400 font-light mr-3 ">monthly pack - 30 capsules</p>

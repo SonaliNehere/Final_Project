@@ -43,9 +43,10 @@ const Menu = () => {
                             <MenuCollection 
                                 menuTitle="menu"
                                 pages={menus.length}
-                                image={["https://b.zmtcdn.com/data/menus/427/49427/dbd02f1683f5e35424da60933b863d2f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
-                                "https://b.zmtcdn.com/data/menus/004/35004/7cc49194ce85b51396b77eeecb53f738.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"]}
-                                image={menus}
+                                /*image={["https://b.zmtcdn.com/data/menus/427/49427/dbd02f1683f5e35424da60933b863d2f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
+                                "https://b.zmtcdn.com/data/menus/004/35004/7cc49194ce85b51396b77eeecb53f738.jpeg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"]}   */
+                                
+                               image={menus}
                             />
             </div>
         </>

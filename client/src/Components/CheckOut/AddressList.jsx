@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { useSelector, useDispatch } from 'react-redux';
-
-
 
 export default function AddressList(props) {
   const [selected, setSelected] = useState(props.address[0]);
@@ -67,7 +65,7 @@ export default function AddressList(props) {
       </div>
     </div>
   );
-};
+}
 
 function CheckIcon(props) {
   return (

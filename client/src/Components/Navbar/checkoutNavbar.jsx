@@ -5,15 +5,6 @@ import { useSelector } from "react-redux";
 import {gravatar} from "gravatar";
 
 
-
-//components
-import SignIn from "../Auth/SignIn";
-import SignUp from "../Auth/SignUp";
-import UserDropdown from "./UserDropdown";
-
-
-
-
 const CheckNavbar= () => {
    
     const reduxState = useSelector((global) => global.user.user);
@@ -21,7 +12,8 @@ const CheckNavbar= () => {
     return(
     <>
   
-        <nav className="p-4 flex bg-white shadow-md w-full items-center lg:shadow-none ">
+        <nav className="p-4 flex bg-white shadow-md w-full items-center 
+            lg:shadow-none ">
         <div className="container px-4 md:px-20 mx-auto">
             <div className="flex w-full items-center justify-between ">
                 <AiOutlineArrowLeft />

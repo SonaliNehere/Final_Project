@@ -21,8 +21,8 @@ export default function ReviewModal({ isOpen, setIsOpen,  ...props })
     const {id} = useParams();
     const dispatch = useDispatch();
 
-      const handlechange = (e) => setReviewData(
-        (prev) => ({...prev, [e.target.id]: e.target.value})
+      const handlechange = (e) => 
+        setReviewData((prev) => ({...prev, [e.target.id]: e.target.value})
       );
 
     function closeModal() {
@@ -100,14 +100,16 @@ export default function ReviewModal({ isOpen, setIsOpen,  ...props })
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
+              <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden
+               text-left align-middle transition-all transform bg-white shadow-xl
+                rounded-2xl">
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
                   Add Review
                 </Dialog.Title>
-                <div className="mt-2">
+                <div className="mt-2 flex flex-col gap-4">
                     <div className="flex items-center gap-3">
                         <div className="flex items-center gap-2">
                         <input 
@@ -149,24 +151,22 @@ export default function ReviewModal({ isOpen, setIsOpen,  ...props })
                                 value={reviewData.subject}
                                 onChange={handlechange}
                                 placeholder="amazing food" 
-                                className="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none
-                                    focus:border-zomato-400"
+                                className="w-full border border-gray-400 px-3 py-2
+                                 rounded focus:outline-none focus:border-zomato-400"
                             />
 
                         </div>
                         <div className="flex flex-col gap-2">
                             <label htmlFor="reviewText">Review Text</label>
                             <textarea
-                                type="text"
                                 id="reviewText"
                                 value={reviewData.reviewText}
                                 onChange={handlechange}
                                 placeholder="amazing food" 
                                 rows="5"
-                                className="w-full border border-gray-400 px-3 py-2 rounded focus:outline-none
-                                    focus:border-zomato-400"
-                            >
-                            </textarea>
+                                className="w-full border border-gray-400 px-3 py-2
+                                 rounded focus:outline-none focus:border-zomato-400"
+                            ></textarea>
 
                         </div>
                     </form>
@@ -176,7 +176,10 @@ export default function ReviewModal({ isOpen, setIsOpen,  ...props })
                 <div className="mt-4">
                   <button
                     type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                    className="inline-flex justify-center px-4 py-2 text-sm 
+                    font-medium text-blue-900 bg-blue-100 border border-transparent
+                     rounded-md hover:bg-blue-200 focus:outline-none 
+                     focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
                     onClick={submit}
                   >
                     Submit
@@ -188,5 +191,5 @@ export default function ReviewModal({ isOpen, setIsOpen,  ...props })
         </Dialog>
       </Transition>
     </>
-  )
+  );
 }

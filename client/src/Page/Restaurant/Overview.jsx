@@ -9,16 +9,15 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useSelector, useDispatch } from "react-redux";
 
 //components
-import MenuSimilarRestaurantCard from './MenuSimilarRestaurantCard';
+import MenuSimilarRestaurantCard from '../../Components/restaurant/MenuSimilarRestaurantCard';
 import ReviewCard from '../../Components/restaurant/Reviews/ReviewCard';
 import MapView from '../../Components/restaurant/MapView';
 import MenuCollection from '../../Components/restaurant/MenuCollection';
 import { NextArrow, PrevArrow } from '../../Components/CarousalArrow';
+
+//redux action
 import { getImage } from '../../Redux/Reducer/Image/Image.action';
 import { getReviews } from '../../Redux/Reducer/Reviews/review.action';
-
-
-
 
 
 const Overview = () => {
@@ -104,7 +103,8 @@ const Overview = () => {
                     <div className="flex justify-between items-center">
                         <h4 className="text-lg font-medium mx-2">Menu</h4>
                         <Link to={`/restaurant/${id}/menu`}>
-                            <span className="flex items-center gap-1 text-zomato-400">
+                            <span className="flex items-center gap-1
+                             text-zomato-400">
                                 See all menu <IoMdArrowDropright /> 
                             </span>
                         </Link>
@@ -122,7 +122,8 @@ const Overview = () => {
                     <h4 className="text-lg font-medium my-4 mx-2">Cuisine</h4>
                     <div className="flex flex-wrap gap-2 mx-2">
                         {reduxState?.cuisine.map((data) => (
-                            <span className="border border-gray-600 text-blue-400 px-2 py-1 rounded-full">
+                            <span className="border border-gray-600 text-blue-400
+                             px-2 py-1 rounded-full">
                                 {data}
                             </span>
                         ))}
@@ -148,7 +149,9 @@ const Overview = () => {
                         </small>
                     </div>
                     <div className="my-4 ">
-                        <h4 className="text-lg font-medium mx-2">Similar Restaurants</h4>
+                        <h4 className="text-lg font-medium mx-2">
+                            Similar Restaurants
+                        </h4>
                         <Slider {...settings}>
                             <MenuSimilarRestaurantCard
                                 image="https://b.zmtcdn.com/data/pictures/0/19594240/290caace5a39d17128e63288b4389de6_featured_v2.jpg?output-format=webp"
@@ -182,7 +185,7 @@ const Overview = () => {
                             size={24}
                             activeColor="#ffd700"
                         />
-                        {Reviews.map((reviewData) =>    (
+                        {Reviews.map((reviewData) =>  (
                             <ReviewCard {...reviewData}/>
                         ))}
                         
@@ -196,16 +199,17 @@ const Overview = () => {
                         />
                     </div>
                     <div className="my-4 flex flex-col gap-4 mx-2"> 
+                       {/* <ReviewCard  />
                         <ReviewCard  />
                         <ReviewCard  />
-                        <ReviewCard  />
-                        <ReviewCard  />
+                       <ReviewCard  /> */}
                     </div>
                 </div>
                 
                 <aside 
                     style={{height : "fit-content" }}
-                    className="hidden md:flex md:w-4/12 sticky rounded-xl top-2 bg-white p-3 shadow-md flex flex-col gap-4"
+                    className="hidden md:flex md:w-4/12 sticky rounded-xl top-2
+                     bg-white p-3 shadow-md flex flex-col gap-4"
                 >
                     <MapView 
                         title={reduxState?.name}

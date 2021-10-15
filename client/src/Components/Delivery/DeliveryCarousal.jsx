@@ -1,8 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-
-
 //components
 import DeliveryCategory from './DeliveryCategory';
 import { NextArrow, PrevArrow } from '../CarousalArrow';

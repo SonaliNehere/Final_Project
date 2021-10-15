@@ -14,7 +14,8 @@ const ImageGrid = (props) => {
                 <div className="w-full h-full overflow-hidden">
                     <img src={props.images.length && props.images[0].location}
                     alt= "restautant image"
-                    className="w-full h-full object-cover rounded-lg transform transition duration-700 hover:scale-110"
+                    className="w-full h-full object-cover rounded-lg 
+                    transform transition duration-700 hover:scale-110"
                     />
                 </div>
                 <div className="w-1/4 h-full flex flex-col gap-1 overflow-hidden">

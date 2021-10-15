@@ -38,17 +38,19 @@ const OrderOnline = () => {
         reduxState && 
         dispatch(getFoodList(reduxState.menu)).then((data) => 
             setMenu(data.payload.menus.menus)
-            //console.log(data)
+            
         );
     }, [reduxState]);
-    console.log({state: menu});
+   
     return (
         <>
             <div className="w-full h-screen flex ">
-                <aside className="hidden md:flex flex-col gap-3 border-r  border-gray-200  h-screen w-1/4">
+                <aside className="hidden md:flex flex-col gap-3 border-r 
+                 border-gray-200  h-screen w-1/4 overflow-y-scroll">
                     {menu.map((item) => (
                         <MenuListContainer {...item} key={item._id }
-                        onClickHandler={onClickHandler} selected={selected} />
+                            onClickHandler={onClickHandler} selected={selected} 
+                        />
                     ))}
                    {/* <MenuListContainer/>
                     <MenuListContainer/> */}
@@ -57,11 +59,14 @@ const OrderOnline = () => {
                 <div className="w-full h-screen md:w-3/4 px-4">
                     <div className="pl-3 mb-4">
                         <h2 className="text-xl font-semibold">Order Online</h2>
-                        <h4 className="flex items-center gap-2 font-light text-gray-500"> 
-                            < AiOutlineCompass/> Live Track Your Order | < BiTimeFive/> 45 Min
+                        <h4 className="flex items-center gap-2 font-light
+                         text-gray-500"> 
+                            < AiOutlineCompass/> Live Track Your Order | 
+                                < BiTimeFive/> 45 Min
                         </h4>
                     </div>
-                    <section className="h-screen overflow-y-scroll flex flex-col gap-3 md:gap-5">
+                    <section className="h-screen overflow-y-scroll flex flex-col 
+                        gap-3 md:gap-5">
                         {menu.map((item) => (
                             <FoodList key={item._id} {...item} />
                         ))}

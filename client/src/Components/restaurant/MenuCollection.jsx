@@ -34,13 +34,14 @@ const MenuCollection = (props) => {
             <div className="w-full h-full overflow-hidden rounded-lg">
                <img src={props.image[0]}
                     alt="menu"
-                    className="w-full h-full rounded-lg transform transition duration-400 hover:scale-110"
+                    className="w-full h-full rounded-lg transform transition 
+                    duration-400 hover:scale-110"
                 />
 
             </div> 
             <div>
                 <strong>{props.menuTitle}</strong>
-                <p>{props.pages}</p>
+                <p>{props.pages} Pages</p>
             </div>
         </div>
         </>

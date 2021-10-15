@@ -1,7 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-
 //components
 import PictureCarousalCard from '../PictureCarousal';
 import { NextArrow, PrevArrow } from '../CarousalArrow';

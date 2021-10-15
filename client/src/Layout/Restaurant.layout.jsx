@@ -48,6 +48,7 @@ const RestaurantLayout = (props) => {
 
     return (
         <>
+        {" "}
         <RestaurantNavbar />
         <div className="container mx-auto px-4 lg:px-20 mt-4 pb-10">
             <ImageGrid 

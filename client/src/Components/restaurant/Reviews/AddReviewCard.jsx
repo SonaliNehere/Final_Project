@@ -37,7 +37,9 @@ const AddReviewCard = () => {
                     </div>
                 </div>
                
-                <button onClick={openModal} className="text-zomato-400">Write a review</button>  
+                <button onClick={openModal} className="text-zomato-400">
+                    Write a review
+                </button>  
         </>
     );
 };

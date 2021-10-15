@@ -15,6 +15,7 @@ import FoodItem from './FoodItem';
 const CartSM = ({ toggle }) => {
     const reduxState = useSelector((global) => global.cart.cart);
     const history = useHistory();
+    
     const continueToCheckout = () => history.push("/checkout/orders");
     return(
         <>
@@ -27,9 +28,10 @@ const CartSM = ({ toggle }) => {
                         {reduxState.length} item <IoMdArrowDropup />
                     </small>
                     <h4>₹
-                        {reduxState.reduce(
-                            (acc, curVal) => acc + curVal.totalPrice, 0 )}
-                        <sub>(plus tax)</sub> </h4> 
+                        {reduxState.reduce((acc, curVal) => 
+                            acc + curVal.totalPrice, 0 )}
+                        <sub>(plus tax)</sub> 
+                    </h4> 
                 </div>
                 <button onClick={continueToCheckout}
                     className="flex items-center gap-1 bg-zomato-400 
@@ -47,8 +49,8 @@ const CartLg = ({ toggle }) => {
     const continueToCheckout = () => history.push("/checkout/orders");
     return(
         <>
-            <div className="hidden md:flex items-center justify-between container lg:w-10/12 
-             -mx-4 md:w-full ">
+            <div className="hidden md:flex items-center justify-between container 
+                lg:w-10/12 -mx-4 md:w-full ">
                 <div className="flex gap-2 text-xl items-start">
                     <span 
                         className="bg-white border border-gray-300 p-1 rounded "
@@ -56,15 +58,17 @@ const CartLg = ({ toggle }) => {
                     >
                         <IoMdArrowDropup />
                     </span>
-                    <h4>Your Orders {reduxState.length} </h4> 
+                    <h4>Your Orders ({reduxState.length}) </h4> 
                 </div>
                 <div className="flex items-center gap-2">
-                    <h4 className="text-xl"> Subtotal:₹{reduxState.reduce(
-                            (acc, curVal) => acc + curVal.totalPrice, 0 )}
+                    <h4 className="text-xl"> Subtotal:₹{" "}
+                        {reduxState.reduce((acc, curVal) => 
+                            acc + curVal.totalPrice, 0 )}
                     </h4> 
                     <button onClick={continueToCheckout}
-                    className="flex items-center text-lg font-light h-10 gap-1 bg-zomato-400 
-                      px-3 py-1 text-white rounded-lg "> 
+                    className="flex items-center text-lg font-light h-10 gap-1
+                     bg-zomato-400 px-3 py-1 text-white rounded-lg "
+                    > 
                         Continue <IoMdArrowDropright/> 
                     </button>
                 </div>
@@ -76,12 +80,10 @@ const CartLg = ({ toggle }) => {
 const CartContainer = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [cartData, setCartData] = useState([]);
-    
 
     const dispatch = useDispatch();
     const reduxState = useSelector((global) => global.cart.cart);
 
-    
     const toggleCart = () => setIsOpen((prev) => !prev);
     const closeCart = () => setIsOpen(false);
     return (
@@ -94,7 +96,7 @@ const CartContainer = () => {
                 <div className="flex items-center justify-between w-3/5 md:px-20
                     lg:w-10/12 md:w-full w-9/12">
                     <h3 className="text-xl font-semibold">Your Orders</h3>
-                    <IoCloseSharp onClick={closeCart }/>
+                    <IoCloseSharp onClick={closeCart } />
                 </div>
                 <hr className="my-2" />
                 <div className="flex flex-col gap-2 justify-around md:px-20 

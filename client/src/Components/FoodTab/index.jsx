@@ -5,8 +5,6 @@ import { RiShoppingBag3Line  } from "react-icons/ri";
 import { useParams, Link } from 'react-router-dom';
 import classnames from "classnames";
 
-
-
 const MobileTabs = () => {
     const [ allTypes, setAllTypes ] = useState([
         {
@@ -36,24 +34,13 @@ const MobileTabs = () => {
     ]);
     const { type } = useParams();
 
-    { /*
-    useEffect(() => {
-        if(type) {
-            const updateTypes = allTypes.map((item) => {
-                if(item.id === type) {
-                    return{ ...item, isActive: true};
-                }
-                return item;
-            });
-            setAllTypes(updateTypes);
-        }
-            
-    }, [type]);
-    */}
+    
 
     return (
         <>
-            <div className="lg:hidden container  bg-white shadow-lg p-3 fixed bottom-0 z-10 flex items-center justify-between md:justify-evenly mx-auto text-gray-500 border">
+            <div className="lg:hidden container  bg-white shadow-lg p-3 fixed 
+                bottom-0 z-10 flex items-center justify-between md:justify-evenly
+                 mx-auto text-gray-500 border">
                 {allTypes.map((items) => (
                     <Link to= {`/${items.id}`}>
                     <div 
@@ -61,7 +48,8 @@ const MobileTabs = () => {
                             type === items.id
                             ? "flex flex-col relative items-center text-xl text-zomato-400"
                             : "flex flex-col items-center text-xl"
-                    } >
+                        } 
+                    >
                         <div
                             className={
                             type === items.id &&
@@ -123,8 +111,11 @@ const LargeTabs = () => {
                 {allTypes.map((items) => (
                     <Link to= {`/${items.id}`}>
                     <div className={ classnames(
-                        "flex items-center gap-3",
-                        { "border-b-2 border-zomato-400 pb-2 transition duration-700 ease-in-out" : type === items.id, })}
+                        "flex items-center gap-3 pb-2 transition duration-700 ease-in-out",
+                            {
+                                 "border-b-2 border-zomato-400  " : type === items.id, 
+                            }
+                        )}
                     >
                     <div 
                         className= {classnames("w-16 h-16 p-4 bg-gray-100 rounded-full", 
@@ -140,7 +131,8 @@ const LargeTabs = () => {
                     <h3 className={ type === items.id
                         ? "text-xl text-zomato-400"
                         : "text-xl text-gray-700"
-                        }>
+                        }
+                    >
                         {items.name}
                     </h3>
                     </div>
@@ -157,10 +149,12 @@ const LargeTabs = () => {
 
 const FoodTab = () => {
     return (
+        <>
         <div>
             <MobileTabs />
             <LargeTabs />
         </div>
+        </>
     );
 };
 

@@ -7,8 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import {gravatar} from "gravatar";
 
 
-
-
 //components
 import SignIn from "../Auth/SignIn";
 import SignUp from "../Auth/SignUp";
@@ -52,19 +50,23 @@ const MobileNav = ({ SignIn, SignUp }) => {
                             />
                         </div>
                         {isDropDownOpen && (
-                            <div className="absolute shadow-lg py-3 -bottom-20 -right-4 w-full z-20 bg-white flex flex-col gap-2">
-                            <button onClick={signOutHandler}> Sign Out </button>
+                            <div className="absolute shadow-lg py-3 -bottom-20 
+                                -right-4 w-full z-20 bg-white flex flex-col gap-2">
+                                <button onClick={signOutHandler}> Sign Out </button>
                             
                             </div>
                         )}
                         </>
                     ) : (
                         <>
-                        <span onClick={() => setIsDropDownOpen((prev) => !prev)} className="border border-gray-300 p-2 text-zomato-400 rounded-full ">
+                        <span onClick={() => setIsDropDownOpen((prev) => !prev)}
+                         className="border border-gray-300 p-2 text-zomato-400
+                          rounded-full ">
                             <FaUserAlt/>
                         </span>
                         {isDropDownOpen && (
-                            <div className="absolute shadow-lg py-3 -bottom-20 -right-4 w-full z-20 bg-white flex flex-col gap-2">
+                            <div className="absolute shadow-lg py-3 -bottom-20 
+                                -right-4 w-full z-20 bg-white flex flex-col gap-2">
                             <button onClick={SignIn}> Sign In </button>
                             <button onClick={SignUp} > Sign Up </button>
                             </div>
@@ -97,8 +99,10 @@ const LargeNav = ({ SignIn, SignUp }) => {
                     className="w-full h-full"
                  />
                 </div>
-                <div className="w-3/4 flex items-center gap-3 w-full bg-white shadow-md p-3 border border-gray-200 rounded">
-                    <div className="flex items-center gap-2 border-r-2 border-gray-300 pr-2">
+                <div className="w-3/4 flex items-center gap-3 w-full bg-white 
+                    shadow-md p-3 border border-gray-200 rounded">
+                    <div className="flex items-center gap-2 border-r-2 
+                        border-gray-300 pr-2">
                         <span className="text-zomato-400">
                             <HiLocationMarker />
                         </span>
@@ -124,7 +128,7 @@ const LargeNav = ({ SignIn, SignUp }) => {
                         <div className="relative w-20">
                         <div onClick={() => setIsDropDownOpen((prev) => !prev)} 
                             className="border border-gray-300 p-2 text-zomato-400
-                             rounded-full w-20 h-20 "
+                             rounded-full w-full h-20 "
                         >
                             {/* <FaUserAlt/> */}
                             <img src={gravatar.url(reduxState?.user?.email)}
@@ -133,11 +137,11 @@ const LargeNav = ({ SignIn, SignUp }) => {
                             />
                         </div>
                         {setIsDropDownOpen && (
-                        <div className="absolute shadow-lg py-3  -right-4 w-full z-20 bg-white flex flex-col gap-2">
+                        <div className="absolute shadow-lg py-3  -right-4 w-full
+                         z-30 bg-white flex flex-col gap-2">
                             <button onClick={signOutHandler}> Sign Out </button>
                         </div>
                         )}
-                        
                         
                         </div>
                     ): (
@@ -159,9 +163,6 @@ const LargeNav = ({ SignIn, SignUp }) => {
                 }
 
                 
-                
-                
-
             </div>
         </div>
         
@@ -179,7 +180,8 @@ const Navbar= () => {
     <>
         <SignIn isOpen={openSignin} setIsOpen={setOpenSignin}/>
         <SignUp isOpen={openSignup} setIsOpen={setOpenSignup}/>
-        <nav className="p-4 flex bg-white shadow-md w-full items-center lg:shadow-none ">
+        <nav className="p-4 flex bg-white shadow-md w-full items-center 
+            lg:shadow-none ">
             <MobileNav SignIn={openSignInmodal} SignUp={openSignUpmodal} />
             <LargeNav SignIn={openSignInmodal} SignUp={openSignUpmodal}/>
         </nav>

@@ -9,7 +9,9 @@ import CheckNavbar from '../Components/Navbar/checkoutNavbar';
 import {getCart} from "../Redux/Reducer/Cart/Cart.action";
 
 const CheckoutLayout = (props) => {
+    
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(getCart());
     }, []);

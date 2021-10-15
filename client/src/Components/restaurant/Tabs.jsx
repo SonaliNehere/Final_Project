@@ -12,7 +12,7 @@ const Tab = (props) => {
                 "text-zomato-400 font-semibold border-b-2 border-zomato-400 ": props.isActive,
                 })}
             >
-                <div className="absolute w-full h-2 "/>
+                {/*<div className="absolute w-full h-2 "/>*/}
                 <h3 className="text-lg md:text-xl">{props.title}</h3>
 
             </div>
@@ -56,7 +56,8 @@ const TabContainer = (props) => {
 
     return (
         <>
-            <div className="flex relative items-center pb-0 gap-8  md:gap-20  border-b-2 ">
+            <div className="flex relative items-center pb-4 gap-8  md:gap-20  
+                border-b-2 overflow-x-scroll">
                 {tabs.map((tab) => (
                     <Tab {...tab} key={`123${tab.router}`} />
                 ))}

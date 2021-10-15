@@ -20,18 +20,22 @@ const RestaurantCard = (props) => {
 
     return (
         <Link to={`/restaurant/${props._id}`} className="w-full">
-            <div className="bg-white p-4 w-full mb-4 rounded-2xl transition duration-700 ease-in-out md:w-1/2 hover:shadow-lg lg:w-1/3 ">
+            <div className="bg-white p-4 w-full mb-4 rounded-2xl 
+            transition duration-700 ease-in-out md:w-1/2 hover:shadow-lg lg:w-1/3 ">
                 <div className="w-full h-56 lg:h-64 relative">
-                    <div className="absolute w-full flex items-end justify-between bottom-4">
+                    <div className="absolute w-full flex items-end justify-between
+                     bottom-4">
                         <div className="flex flex-col gap-2 items-start">
                             {props.isPro && (
-                                <span className="bg-zomato-400 text-white px-2 py-1 rounded text-sm">
+                                <span className="bg-zomato-400 text-white px-2 py-1
+                                 rounded text-sm">
                                     Pro extra 10% off 
                                 </span>
                             )}
                             
                             {props.isOff && (
-                                <span className="bg-blue-600 text-white px-2 py-1 rounded text-sm">
+                                <span className="bg-blue-600 text-white px-2 py-1
+                                 rounded text-sm">
                                     ₹{`${props.isOff}`} OFF
                                 </span>
                             )}
@@ -50,11 +54,13 @@ const RestaurantCard = (props) => {
                 <div className="my-2 flex flex-col gap-2">
                     <div className="flex items-center justify-between">
                         <h4 className="text-xl font-medium">{props.name}</h4>
-                        <span className="bg-green-800 text-white text-sm  p-1 rounded flex items-center mr-3">
+                        <span className="bg-green-800 text-white text-sm  p-1 rounded
+                         flex items-center mr-3">
                             {props.restaurantReviewValue} <AiTwotoneStar />
                         </span>
                     </div>
-                    <div className="flex items-center justify-between text-gray-500 mr-3">
+                    <div className="flex items-center justify-between text-gray-500
+                     mr-3">
                         <p>{props.cuisine.join(", ")}</p>
                         <p>₹ {props.averageCost} for one</p>
                     </div>

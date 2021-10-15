@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const PhotoCollection = (props) => {
     
     return (

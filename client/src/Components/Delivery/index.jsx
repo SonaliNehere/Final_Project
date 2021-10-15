@@ -64,7 +64,9 @@ const Delivery = () => {
     return (
         <>
             <DeliveryCarousal />
-            <h1 className="text-2xl font-semibold mb-4">Delivery Restaurants in Vijay Nagar</h1>
+            <h1 className="text-2xl md:font-semibold mb-2 mt-4">
+                Delivery Restaurants in Vijay Nagar
+            </h1>
             {/* <Brand />  */}
             <div className="flex justify-between flex-wrap">
                 {restaurantList.map((restaurant) => (

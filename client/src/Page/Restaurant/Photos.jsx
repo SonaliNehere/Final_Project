@@ -19,6 +19,7 @@ const Photos = () => {
     ]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [CurrentImg, setCurrentImg] = useState(0);
+    
     const closeViewer = () => setIsMenuOpen(false);
     const openViewer = () => setIsMenuOpen(true);
 

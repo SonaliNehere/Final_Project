@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { TiStarFullOutline } from "react-icons/ti";
 import {useDispatch} from "react-redux";
-import {getUser} from "../../../Redux/Reducer/User/user.action";
 import dayjs from "dayjs";
+
+//redux action
+import {getUser} from "../../../Redux/Reducer/User/user.action";
+
 
 const ReviewCard = (props) => {
     const [user, setUser] = useState("");
@@ -20,7 +23,7 @@ const ReviewCard = (props) => {
         <>
             <div className="flex flex-col gap-3 my-3" >
                 <div className="flex items-center justify-between ">
-                <div className="flex flex-col gap-3" >
+              
                     <div className="flex items-center gap-2">
                         <div className="w-10 h-10 rounded-full">
                             <img 
@@ -30,19 +33,20 @@ const ReviewCard = (props) => {
                             />
                         </div>
                         <div className="flex flex-col ">
-                            <h3 className="text-lg font-semibold ">
-                            {user} 
-                            </h3>
+                            <h3 className="text-lg font-semibold ">{user} </h3>
                             <small className="text-gray-500">
                                 5 Reviews &#8226; 3 Followers
                             </small>
                         </div>
                     </div>
-                </div>
-                    <button className="text-zomato-400 border border-zomato-400 py-2 px-4 rounded-lg">Follow</button>
+            
+                    <button className="text-zomato-400 border border-zomato-400
+                     py-2 px-4 rounded-lg">
+                        Follow
+                    </button>
                 </div>
                
-                <div>
+                <div className="flex flex-col gap-3" >
                     <div className="flex items-center gap-3 my-1">
                         <span className="text-white text-xs bg-green-700 px-2 py-1 rounded-lg flex items-center gap-1">
                             3 <TiStarFullOutline />
@@ -54,7 +58,7 @@ const ReviewCard = (props) => {
                             {dayjs(props.createdAt).format("DD MM YYYY")}
                         </small>
                     </div>
-                    <div classname="w-full">
+                    <div className="w-full">
                         <p className="text-gray-600 font-light w-full text-base">
                             {props.reviewText}
                         </p>

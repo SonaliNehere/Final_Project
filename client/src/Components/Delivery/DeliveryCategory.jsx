@@ -12,7 +12,9 @@ const DeliverySmCard = ({ image, title }) => {
                     />
                 </div>
                 <div>
-                    <h3 className="text-sm text-center font-light my-1 ">{title}</h3>
+                    <h3 className="text-sm text-center font-light my-1 ">
+                        {title}
+                    </h3>
                 </div>
 
             </div>

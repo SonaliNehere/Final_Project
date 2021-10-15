@@ -22,16 +22,17 @@ const FoodItem = (props) => {
                     <div className="flex items-center gap-2 ">
                         <div className="flex flex-col items-end ">
                             <small>
-                            ₹{parseInt(props.price) * parseInt(props.quantity)} 
+                                ₹{parseInt(props.price) * parseInt(props.quantity)} 
                             </small>
-                            <div className="px-1 bg-zomato-400 text-white rounded flex items-center gap-1">
+                            <div className="px-1 bg-zomato-400 text-white rounded
+                             flex items-center gap-1">
                             <button 
                                 onClick={decrement}
                                 className="p-1 bg-zomato-400 text-white rounded"
                             >
                                 -
                             </button>
-                            <small className="">{props.quantity}</small>
+                            <small >{props.quantity}</small>
                             <button 
                                 onClick={increment}
                                 className="p-1 bg-zomato-400 text-white rounded"
@@ -42,7 +43,8 @@ const FoodItem = (props) => {
                         </div>
                         <BsTrashFill 
                             onClick={deleteFoodFromCart}
-                            className="text-zomato-400 text-lg md:text-xl"/>
+                            className="text-zomato-400 text-lg md:text-xl"
+                        />
                     </div>
             </div> 
             <hr className="my-1"/>

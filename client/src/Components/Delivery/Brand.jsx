@@ -28,7 +28,7 @@ const Brand = (props) => {
       
 
     return (
-        <>
+        
         <div className="my-5 mb-32">
         <Slider {...settings} >
           
@@ -42,7 +42,7 @@ const Brand = (props) => {
             ))}
         </Slider>
         </div>
-        </>
+        
     );
 };
 

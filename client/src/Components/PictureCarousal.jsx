@@ -16,7 +16,6 @@ const PictureCarousalCard = () => {
                 <div
                     className="absolute inset-0 w-full h-full rounded-lg"
                     style={{
-                        
                         background:
                             "linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.05) 50%, rgba(0, 0, 0, 0.05) 85%)",
                     }}
